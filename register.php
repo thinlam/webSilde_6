@@ -23,8 +23,8 @@ if (preg_match('/[^\x20-\x7E]/', $password)) {
 }
 
 // Kiểm tra độ dài
-if (strlen($username) < 4 || strlen($password) < 4) {
-    exit("❌ Username và mật khẩu phải dài ít nhất 4 ký tự.");
+if (strlen($username) < 8 || strlen($password) < 8) {
+    exit("❌ Username và mật khẩu phải dài ít nhất 8 ký tự và 8 ký tự.");
 }
 
 // Kiểm tra xác nhận mật khẩu
