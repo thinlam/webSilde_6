@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng ký tài khoản</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .register-container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    .register-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .register-container label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    .register-container input[type="text"],
+    .register-container input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .register-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #2575fc;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .register-container button:hover {
+      background-color: #2575fc;
+    }
+    .register-container p {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .register-container a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .register-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Đăng ký tài khoản</h2>
+    <form action="register.php" method="post">
+      <label for="username">Tên đăng nhập</label>
+      <input type="text" name="username" id="username" required>
+
+      <label for="password">Mật khẩu</label>
+      <input type="password" name="password" id="password" required>
+
+      <label for="confirm_password">Xác nhận mật khẩu</label>
+      <input type="password" name="confirm_password" id="confirm_password" required>
+
+      <button type="submit">Đăng ký</button>
+    </form>
+    <p>Đã có tài khoản? <a href="index.html">Đăng nhập</a></p>
+  </div>
+</body>
+</html>
