@@ -4,43 +4,41 @@ session_start();
 $dataFile = 'db.json';
 $data = json_decode(file_get_contents($dataFile), true);
 
-// Nhận dữ liệu
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirm  = $_POST['confirm_password'] ?? '';
 
-// Kiểm tra nhập trống
+// Kiểm tra dữ liệu
 if ($username === '' || $password === '' || $confirm === '') {
-    exit("❌ Vui lòng điền đầy đủ thông tin.");
+    echo "❌ Vui lòng điền đầy đủ thông tin.";
+    return;
 }
-
 
 if (preg_match('/[^\x20-\x7E]/', $password)) {
-    exit("❌ Password không được dùng kí tự unicode.");
+    echo "❌ Password không được dùng kí tự unicode.";
+    return;
 }
 
-// Kiểm tra độ dài
 if (strlen($username) < 8 || strlen($password) < 8) {
-    exit("❌ Username và mật khẩu phải dài ít nhất 8 ký tự và 8 ký tự.");
+    echo "❌ Username và mật khẩu phải dài ít nhất 8 ký tự.";
+    return;
 }
 
-// Kiểm tra xác nhận mật khẩu
 if ($password !== $confirm) {
-    exit("❌ Mật khẩu xác nhận không khớp.");
+    echo "❌ Mật khẩu xác nhận không khớp.";
+    return;
 }
 
-// Kiểm tra username đã tồn tại
 if (isset($data['users'][$username])) {
-    exit("❌ Tên đăng nhập đã tồn tại.");
+    echo "❌ Tên đăng nhập đã tồn tại.";
+    return;
 }
 
 // Thêm người dùng mới
 $data['users'][$username] = $password;
 file_put_contents($dataFile, json_encode($data, JSON_PRETTY_PRINT));
 
-// Đăng nhập tự động
 $_SESSION['user'] = $username;
 
-// Điều hướng về trang home
-header('Location: home.php');
-exit;
+// Trả chuỗi báo hiệu thành công
+echo "OK";
