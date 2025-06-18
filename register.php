@@ -14,10 +14,7 @@ if ($username === '' || $password === '' || $confirm === '') {
     exit("❌ Vui lòng điền đầy đủ thông tin.");
 }
 
-// Kiểm tra unicode
-if (preg_match('/[^\x20-\x7E]/', $username)) {
-    exit("❌ Username không được dùng kí tự unicode.");
-}
+
 if (preg_match('/[^\x20-\x7E]/', $password)) {
     exit("❌ Password không được dùng kí tự unicode.");
 }
