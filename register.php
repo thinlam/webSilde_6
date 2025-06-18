@@ -14,10 +14,23 @@ if ($username === '' || $password === '' || $confirm === '') {
     return;
 }
 
+// Không chứa ký tự Unicode
 if (preg_match('/[^\x20-\x7E]/', $password)) {
-    echo "❌ Password không được dùng kí tự unicode.";
+    echo "❌ Password không được dùng kí tự Unicode.";
     return;
 }
+
+// Kiểm tra yêu cầu bảo mật
+if (
+    !preg_match('/[a-z]/', $password) ||       // ít nhất 1 chữ thường
+    !preg_match('/[A-Z]/', $password) ||       // ít nhất 1 chữ hoa
+    !preg_match('/[0-9]/', $password) ||       // ít nhất 1 số
+    !preg_match('/[\W_]/', $password)          // ít nhất 1 ký tự đặc biệt (không phải chữ/số)
+) {
+    echo "❌ Mật khẩu phải có ít nhất 1 chữ thường, 1 chữ hoa, 1 số và 1 ký tự đặc biệt.";
+    return;
+}
+
 
 if (strlen($username) < 8 || strlen($password) < 8) {
     echo "❌ Username và mật khẩu phải dài ít nhất 8 ký tự.";
